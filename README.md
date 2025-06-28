@@ -4,6 +4,7 @@
 ![Cron](https://img.shields.io/badge/Cron-198EBE?logo=cron&logoColor=CCCCCC)
 ![Docker](https://img.shields.io/badge/Docker-Compose-1658DB?logo=docker&logoColor=white)
 ![Make](https://img.shields.io/badge/Make-822322?logo=gnu&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 リポジトリを `clone` 後、`make` を実行するだけで、cron が動き出します。  
 デフォルトでは、実行時の日時をログファイルに書き込む処理が毎分実行されます。
