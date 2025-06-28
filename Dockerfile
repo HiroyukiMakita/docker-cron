@@ -1,8 +1,13 @@
 FROM debian:stable-slim
 
+ARG TIMEZONE=${TIMEZONE}
+
 RUN apt-get -y update && \
     apt-get -y install cron procps rsyslog systemctl less tzdata vim && \
-    ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+    # date コマンドなどの実際のタイムゾーンは /etc/localtime を参照しており、TZ 環境変数には依存しないので
+    # システム全体のタイムゾーン設定である /etc/localtime を正しいタイムゾーンに設定する必要がある
+    ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY ./cron.d/ /etc/cron.d/
 COPY ./startup.sh /etc/cron/startup.sh

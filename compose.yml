@@ -3,6 +3,10 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_cron
     build:
       context: ./
+      args:
+        - TIMEZONE=${TIMEZONE}
+    environment:
+      - TZ=${TIMEZONE}
     tty: true
     volumes:
       - ./cron.d:/etc/cron.d

@@ -13,7 +13,18 @@
 
 また、コンテナ内の `/var/log/cron/` 配下に生成されたファイルはホストの `./logs/` 配下にマウントされるので永続化されます。
 
-## build & up
+## ◯ build & up
+
+- .env ファイルをコピーして、必要に応じて編集してください
+
+特に、タイムゾーンを変更したい場合は、`TIMEZONE` の値を変更してください。  
+（デフォルトは `Asia/Tokyo`）
+
+```bash
+$ cp -n .env.example .env
+```
+
+- `make` コマンドを実行して、コンテナをビルド＆起動します
 
 ```bash
 $ make
@@ -28,7 +39,7 @@ $ mkdir -p ./logs && \
   docker compose exec linux bash
 ```
 
-## cron が動いてるか確認する
+## ◯ cron が動いてるか確認する
 
 ```:bash
 # コンテナに入る
