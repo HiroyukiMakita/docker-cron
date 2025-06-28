@@ -12,9 +12,10 @@ RUN apt-get -y update && \
 COPY ./cron.d/ /etc/cron.d/
 COPY ./startup.sh /etc/cron/startup.sh
 COPY ./aliases.txt /etc/cron/aliases.txt
+COPY ./logrotate/ /etc/logrotate.d/
 
 RUN chmod -R 0644 /etc/cron.d/ && \
-    chown -R root /etc/cron.d/ && \
+    chown -R root:root /etc/cron.d/ && \
     chmod 0744 /etc/cron/startup.sh && \
     mkdir -p /var/log/cron && \
     touch /var/log/cron/schedule.log && \
@@ -23,6 +24,8 @@ RUN chmod -R 0644 /etc/cron.d/ && \
     touch /var/log/cron.log && \
     chmod 644 /var/log/cron.log && \
     chown root:root /var/log/cron.log && \
-    echo "cron.*                                /var/log/cron.log" >> /etc/rsyslog.conf
+    echo "cron.*                                /var/log/cron.log" >> /etc/rsyslog.conf && \
+    chmod -R 0644 /etc/logrotate.d/ && \
+    chown -R root:root /etc/logrotate.d/
 
 CMD ["/etc/cron/startup.sh"]

@@ -1,0 +1,23 @@
+/var/log/cron.log {
+    # 毎日ローテートする
+    daily
+    # 最大7世代保持する
+    rotate 7
+    # ログファイルがなくてもエラーにしない
+    missingok
+    # 空ファイルはスキップ
+    notifempty
+    # 古いログを gzip 圧縮する
+    compress
+    # 圧縮は1日遅らせる
+    delaycompress
+    # 新しいログファイルのパーミッションと所有者
+    create 0640 root root
+    # postrotate や prerotate に書かれたスクリプトが1回だけ実行されるようにする
+    sharedscripts
+
+    postrotate
+        # rsyslog を再読み込みしてログの出力先を切り替える
+        systemctl reload rsyslog > /dev/null 2>&1 || true
+    endscript
+}
