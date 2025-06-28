@@ -3,7 +3,7 @@ FROM debian:stable-slim
 ARG TIMEZONE=${TIMEZONE}
 
 RUN apt-get -y update && \
-    apt-get -y install cron procps rsyslog systemctl less tzdata vim && \
+    apt-get -y install cron procps rsyslog systemctl less tzdata vim curl && \
     # date コマンドなどの実際のタイムゾーンは /etc/localtime を参照しており、TZ 環境変数には依存しないので
     # システム全体のタイムゾーン設定である /etc/localtime を正しいタイムゾーンに設定する必要がある
     ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
