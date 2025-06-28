@@ -6,3 +6,7 @@ logs
 
 # env files
 *.env
+
+# cron.d files
+cron.d
+!cron.d/schedule
