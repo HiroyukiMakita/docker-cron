@@ -1,0 +1,2 @@
+* * * * * root date '+\%Y-\%m-\%d \%H:\%M:\%S' 1>>/var/log/cron/schedule.log 2>>/var/log/cron/schedule-error.log
+

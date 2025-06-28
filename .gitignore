@@ -1,0 +1,8 @@
+# IDE Extension
+.history
+
+# Log folder
+logs
+
+# env files
+*.env

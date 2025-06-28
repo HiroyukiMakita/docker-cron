@@ -1,0 +1,9 @@
+services:
+  cron:
+    container_name: ${COMPOSE_PROJECT_NAME}_cron
+    build:
+      context: ./
+    tty: true
+    volumes:
+      - ./cron.d:/etc/cron.d
+      - ./logs:/var/log/cron
