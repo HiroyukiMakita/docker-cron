@@ -42,13 +42,20 @@ $ mkdir -p ./logs && \
   docker compose exec linux bash
 ```
 
-## ◯ cron が動いてるか確認する
+## ◯ コンテナの起動や停止など
 
-```:bash
+```bash
+# コンテナの起動
+$ make up
 # コンテナに入る
 $ make exec
+# コンテナの停止
+$ make down
+```
 
-# コンテナ内では以下のエイリアスでいろいろできる
+## ◯ コンテナ内では以下のエイリアスでいろいろできる
+
+```bash
 # cron の起動
 $ startcron
 
