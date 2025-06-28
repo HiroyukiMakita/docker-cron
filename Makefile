@@ -16,11 +16,10 @@ EXEC = docker compose exec $(CONTAINER) bash $(ARG)
 CRON := cron
 CONTAINER =
 ARG =
-# MAKE_LOG_FILES := mkdir -p ./logs && touch ./logs/schedule.log && touch ./logs/schedule-error.log
 MAKE_LOG_FILES := mkdir -p ./logs
 CRON_STATUS := $(eval CONTAINER = $(CRON)) $(eval ARG = -c "service cron status") $(EXEC)
 CHECK_CRON_STATUS := printf "%s\e[32m%s\e[00m\n" \
-	"Checking cronstatus ..." "`$(CRON_STATUS)`"
+	"Checking cronstatus ... " "`$(CRON_STATUS)`"
 
 #######################################################################################################################
 # if include source not exists commands
