@@ -6,8 +6,12 @@
 ![Make](https://img.shields.io/badge/Make-822322?logo=gnu&logoColor=white)
 
 リポジトリを `clone` 後、`make` を実行するだけで、cron が動き出します。  
-デフォルトでは、実行時の日時をログファイルに書き込む処理が毎分実行されます。  
-`./cron.d/schedule` を編集したり `./cron.d/` 配下にファイルを配置することで、`restartcron` で任意の処理を実行させることが可能です。  
+デフォルトでは、実行時の日時をログファイルに書き込む処理が毎分実行されます。
+
+## ◯ 概要
+
+`./cron.d/schedule` を編集したり `./cron.d/` 配下にファイルを配置することで任意の処理を実行させることが可能です。  
+※ cron を再起動すると反映できます（`restartcron` エイリアスが使えます）  
 ※ コンテナ内で `./cron.d/` 配下に配置されるファイルの所有者は `root` ユーザーである必要があります。（`WRONG FILE OWNER` というエラーがでる）  
 ※ コンテナ内の `./cron.d/` は root 権限にしてあるから多分大丈夫だけどうまく動かない場合はそのへんの権限系を確認すること
 
@@ -32,8 +36,6 @@ $ make
 # または、make コマンドが使えない方は以下
 
 $ mkdir -p ./logs && \
-  touch ./logs/schedule.log && \
-  touch ./logs/schedule-error.log \
   docker compose build && \
   docker compose up -d && \
   docker compose exec linux bash
@@ -45,7 +47,7 @@ $ mkdir -p ./logs && \
 # コンテナに入る
 $ make exec
 
-# コンテナ内では以下のコマンドでいろいろできる
+# コンテナ内では以下のエイリアスでいろいろできる
 # cron の起動
 $ startcron
 
