@@ -9,6 +9,7 @@ services:
       - TZ=${TIMEZONE}
     tty: true
     restart: ${RESTART_POLICY}
+    network_mode: ${NETWORK_MODE}
     volumes:
       - ./cron.d:/etc/cron.d
       - ./logs:/var/log/cron
